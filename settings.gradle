@@ -1,0 +1,5 @@
+
+rootProject.name = "apk_jiagu"
+include ':jiagu_shell'
+include ':demo'
+include ':jiaguLib'

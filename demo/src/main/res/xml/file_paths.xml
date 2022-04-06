@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  四川生学教育科技有限公司
+  ~  Copyright (c) 2015-2025 Founder Ltd. All Rights Reserved.
+  ~
+  ~  This software is the confidential and proprietary information of
+  ~  Founder. You shall not disclose such Confidential Information
+  ~  and shall use it only in accordance with the terms of the agreements
+  ~  you entered into with Founder.
+  -->
+
+<resources>
+    <paths>
+        <external-path
+            name="camera_photos"
+            path="" />
+        <external-path
+            name="files_root"
+            path="Android/data/com.sxt.teacher/" />
+        <external-path
+            name="files_root"
+            path="Android/data/com.sxt.student/" />
+        <external-path
+            name="files_root"
+            path="Android/data/com.sxt.parent/" />
+        <external-path
+            name="external_storage_root"
+            path="." />
+        <external-path
+            name="external-path"
+            path="." />
+        <external-path
+            name="cache-path"
+            path="." />
+        <external-path
+            name="files-path"
+            path="." />
+    </paths>
+</resources>

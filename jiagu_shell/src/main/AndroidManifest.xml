@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zhh.jiagu.shell">
+
+<!--    <application
+        android:name="com.zhh.jiagu.shell.StubApplication">
+
+        <meta-data android:name="APPLICATION_CLASS_NAME" android:value="com.zhh.jiagu.demo.DemoApplication"/>
+
+    </application>-->
+
+</manifest>

@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+}
+
+//配置META-INFO/MANIFEST.MF文件
+jar{
+    def map = [
+            'Main-Class':"com.zhh.jiagu.JiaGuMain",//执行java -jar .\jiaguLib.jar命令时，指定运行的main所在类
+            'Class-Path':"libs/zip4j-2.9.1.jar libs/AXMLEditor.jar"     //指定依赖的包，依赖多个jar包时，以空格区分
+    ]
+    manifest.attributes(map)
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+
+//执行jar命令 : java -jar jiaguLib.jar [apk名称]
