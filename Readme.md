@@ -4,16 +4,21 @@
 - jiagu_shell 壳工程
 - jiaguLib，java工程，执行APK加固工作
 
-运行build.gradle中的任务`jiagu`，可直接在工程下生成一个`jiagu`目录，该目录加固需要的资源，将需要加固的APK放于该目录,按下操作进行加固：
+运行build.gradle中的任务`jiagu`，可直接在工程下生成一个`jiagu`目录，进入该目录进行如下操作，
 
-1.在`keystore.cfg`中按格式配置签名文件信息；
+1.将需要加固的APK放于该目录中；
 
-2.运行如下命令开始加固；
+2.在`keystore.cfg`中按格式配置签名文件信息；
+
+3.`cmd`进入到当前目录，然后运行如下命令开始加固
 
 >  java -jar jiaguLib.jar [apk名称] keystore.cfg
 
 
-`注：`如果需要直接在工程中运行，请修改变量`isRelease`为false
+`注：`
+- 如果需要直接在工程中运行，请修改变量`isRelease`为false
+
+- 加固过程使用到的命令：`dx`、`apktool`、`zipalign`、`apksigner`，若中间出现找不到对应命令，需要配置环境变量。
 
 注意点：
 签名时，主要增加`--min-sdk-version [你的最低反对版本]`，否则会报异常
