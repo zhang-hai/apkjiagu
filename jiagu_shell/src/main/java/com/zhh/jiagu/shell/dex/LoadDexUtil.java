@@ -4,20 +4,16 @@ import android.app.Application;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.os.Build;
-import android.os.FileUtils;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
 
-import com.zhh.jiagu.shell.BuildConfig;
 import com.zhh.jiagu.shell.util.LogUtil;
 import com.zhh.jiagu.shell.util.RefInvoke;
 import com.zhh.jiagu.shell.util.Utils;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
