@@ -50,11 +50,7 @@ public class JiaGuMain {
     private static String ROOT = "./";
     private static String OUT_TMP = ROOT+"temp/";
 
-//    private static String ORIGIN_APK = "demo/app-release.apk";
-//    private static String ORIGIN_APK = "demo/app_preview3.apk";
     private static String ORIGIN_APK = "demo/release/demo-release.apk";
-//    private static String ORIGIN_APK = "demo/sxt_parent.apk";
-//    private static String ORIGIN_APK = "demo/sxt_teacher.apk";
 
     private static String KEYSTORE_CFG = "keystore.cfg";
 
@@ -76,12 +72,6 @@ public class JiaGuMain {
      * @param args
      */
     public static void main(String[] args) {
-//        String str = "hello";
-//        byte[] data = AESUtil.encrypt(str.getBytes());
-//        System.out.println("========== encrypt === "+new String(data));
-//
-//        System.out.println("========== decrypt === "+new String(AESUtil.decrypt(data)));
-
         if (!isRelease){
             ROOT = "jiaguLib/";
             OUT_TMP = ROOT+"temp/";
