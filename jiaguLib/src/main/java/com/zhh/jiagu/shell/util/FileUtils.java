@@ -18,16 +18,14 @@ public class FileUtils {
         File file = new File(path);
         //文件存在时，执行删除操作
         if (file.exists()){
-            if (file.isFile()){
-                file.delete();
-            }else {
+            if (!file.isFile()) {
                 File[] files = file.listFiles();
-                for (File child : files){
+                for (File child : files) {
                     deleteFile(child.getAbsolutePath());
                 }
                 //删除空目录
-                file.delete();
             }
+            file.delete();
         }
     }
 

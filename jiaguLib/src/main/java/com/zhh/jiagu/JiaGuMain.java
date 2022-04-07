@@ -47,7 +47,7 @@ import javax.xml.transform.stream.StreamResult;
 public class JiaGuMain {
 
 //    private final static String ROOT = "jiaguLib/";
-    private static String ROOT = "./";
+    private static String ROOT = "";
     private static String OUT_TMP = ROOT+"temp/";
 
     private static String ORIGIN_APK = "demo/release/demo-release.apk";
@@ -57,7 +57,7 @@ public class JiaGuMain {
     /**
      * 是否发布为Jar包，运行的
      */
-    private final static boolean isRelease = false;
+    private final static boolean isRelease = true;
 
     static {
         File file = new File(ROOT);
@@ -132,15 +132,13 @@ public class JiaGuMain {
 
             //步骤五：将步骤三生成的新dex文件替换apk中的所有dex文件
             if (dexFile != null && !outpath.isEmpty()){
-                boolean ret = replaceDexFiles(outpath,dexFile.getAbsolutePath());
+                boolean ret = replaceDexFiles(outpath,dexFile.getPath());
                 //步骤六：APK对齐处理
                 if (ret){
 //                    String outpath = OUT_TMP + ORIGIN_APK.substring(ORIGIN_APK.lastIndexOf("/")+1);
                     File apk = zipalignApk(new File(outpath));
-                    if (apk != null){
-                        //步骤七：对生成的APK进行签名
-                        resignApk(new File(outpath));
-                    }
+                    //步骤七：对生成的APK进行签名
+                    resignApk(apk);
                 }
             }
         }catch (Exception e){
@@ -160,7 +158,7 @@ public class JiaGuMain {
         ZipUtil.unZip(aarFile, aarTemp);
         File classesJar = new File(aarTemp, "classes.jar");
         File classesDex = new File(aarTemp, "classes.dex");
-        boolean ret = ProcessUtil.executeCommand(String.format(Locale.CHINESE,"dx --dex --output %s %s",classesDex.getAbsolutePath(),classesJar.getAbsolutePath()));
+        boolean ret = ProcessUtil.executeCommand(String.format(Locale.CHINESE,"dx --dex --output %s %s",classesDex.getPath(),classesJar.getPath()));
         if (ret){
             System.out.println("已生成======"+classesDex.getPath());
         }
@@ -202,9 +200,9 @@ public class JiaGuMain {
                 outputFile.delete();
             }
             Zip4jUtil.zipFiles(dexFiles,outputFile);
-            System.out.println("已生成======"+outputFile.getAbsolutePath());
+            System.out.println("已生成======"+outputFile.getPath());
 
-            FileUtils.deleteFile(apkTemp.getAbsolutePath());
+            FileUtils.deleteFile(apkTemp.getPath());
 
             return outputFile;
         }catch (Exception e){
@@ -297,9 +295,7 @@ public class JiaGuMain {
             System.out.println("=== modifyOriginApkManifest ==== "+(System.currentTimeMillis()-start)+"ms");
         }
         //删除解压的目录
-//        ThreadPoolUtil.execute(()->{
-            FileUtils.deleteFile(outputPath);
-//        });
+        FileUtils.deleteFile(outputPath);
 
         return path;
     }
@@ -446,12 +442,12 @@ public class JiaGuMain {
         logTitle("步骤六：重新对APK进行对齐处理.....");
         //步骤四：重新对APK进行对齐处理
         File alignedApk = new File(unAlignedApk.getParent(),unAlignedApk.getName().replace(".apk","_align.apk"));
-        boolean ret = ProcessUtil.executeCommand("zipalign -v -p 4 " + unAlignedApk.getAbsolutePath() + " " + alignedApk.getAbsolutePath());
+        boolean ret = ProcessUtil.executeCommand("zipalign -v -p 4 " + unAlignedApk.getPath() + " " + alignedApk.getPath());
         if (ret){
             System.out.println("已完成APK进行对齐处理======");
         }
         //删除未对齐的包
-        FileUtils.deleteFile(unAlignedApk.getAbsolutePath());
+        FileUtils.deleteFile(unAlignedApk.getPath());
 
         return alignedApk;
     }
@@ -474,12 +470,12 @@ public class JiaGuMain {
         }
 
         String signerCmd = String.format("apksigner sign --ks %s --ks-key-alias %s --min-sdk-version 21 --ks-pass pass:%s --key-pass pass:%s --out %s %s",
-                store.storeFile,store.alias,store.storePassword,store.keyPassword,signedApk.getAbsolutePath(),unSignedApk.getAbsolutePath());
+                store.storeFile,store.alias,store.storePassword,store.keyPassword,signedApk.getPath(),unSignedApk.getPath());
 
         boolean ret = ProcessUtil.executeCommand(signerCmd);
         System.out.println("已完成签名======"+signedApk.getPath());
         //删除未对齐的包
-        FileUtils.deleteFile(unSignedApk.getAbsolutePath());
+        FileUtils.deleteFile(unSignedApk.getPath());
         return signedApk;
     }
 
