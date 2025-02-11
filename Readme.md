@@ -1,5 +1,6 @@
+##### 一、加密方式的源码工程请移步[jiagu_aes_project](https://github.com/zhang-hai/jiagu_aes_project)
 
-##### 工程目录说明
+##### 二、工程目录说明
 - demo 待加固工程
 - jiagu_shell 壳工程
 - jiaguLib，java工程，执行APK加固工作
@@ -28,5 +29,3 @@ apksigner sign --ks [.jks文件门路] --ks-key-alias [别名] --min-sdk-version
 
 
 关于原理详解可查看[APK加固原理详解](https://www.jianshu.com/p/89dee4891f70)
-
-若想查看加密使用的C++工程请移步[jiagu_aes_project](https://github.com/zhang-hai/jiagu_aes_project)
