@@ -1,6 +1,6 @@
 ##### 一、加密方式的源码工程请移步[jiagu_aes_project](https://github.com/zhang-hai/jiagu_aes_project)
 
-##### 二、工程目录说明
+##### 二、本工程目录说明
 - demo 待加固工程
 - jiagu_shell 壳工程
 - jiaguLib，java工程，执行APK加固工作
